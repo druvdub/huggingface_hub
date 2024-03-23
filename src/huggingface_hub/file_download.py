@@ -1019,6 +1019,7 @@ def hf_hub_download(
     local_files_only: bool = False,
     legacy_cache_layout: bool = False,
     endpoint: Optional[str] = None,
+    dry_run: Optional[bool] = False,
 ) -> str:
     """Download a given file if it's not already present in the local cache.
 
@@ -1117,6 +1118,10 @@ def hf_hub_download(
             If `True`, uses the legacy file cache layout i.e. just call [`hf_hub_url`]
             then `cached_download`. This is deprecated as the new cache layout is
             more powerful.
+        dry_run (`bool`, *optional*, defaults to `False`):
+            If `True`, the function will return a dataclass with the filename, i.e. path in repo on the Hub,
+            destination path, commit hash or the ETag, file size, and the download size. The file will not be
+            downloaded.
 
     Returns:
         Local path (string) of file or if networking is off, last version of
